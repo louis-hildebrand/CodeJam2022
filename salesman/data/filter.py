@@ -3,9 +3,9 @@ from fileinput import close
 import math
 import pandas as pd
 
-def filter(start_time, end_time):
+def filter_routes(start_time, end_time):
     fill_data()
-    filter_date(start_time, end_time)
+    return filter_date(start_time, end_time)
 
 
 def filter_date(start_time: str, end_time: str):
@@ -19,7 +19,7 @@ def filter_date(start_time: str, end_time: str):
     return output
 
 def fill_data():
-    csvfile = pd.read_csv(r'salesman\data\123Loadboard_CodeJam_2022_dataset.csv')
+    csvfile = pd.read_csv('123Loadboard_CodeJam_2022_dataset.csv')
     #compute linear distance for all the shipments
     distance_value = []
     arrival_time = []
@@ -34,7 +34,7 @@ def fill_data():
     csvfile.insert(10, "net pay", pay)
     
     csvfile.to_csv('full_data.csv', index = False, line_terminator="\n")
-    print(csvfile)
+    # print(csvfile)
     return csvfile
 
 def to_t_delt(number):
@@ -68,4 +68,4 @@ def find_dist(long1, lat1, long2, lat2):
     return d
 
 if __name__ == '__main__':
-    filter('2022-02-28  5:00:00','2022-03-28  10:00:00')
+    print(filter_routes('2022-02-28  5:00:00','2022-02-28  5:01:00'))
