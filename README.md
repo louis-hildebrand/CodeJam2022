@@ -7,7 +7,7 @@ Simple API that determines the optimal route for a trucker given certain constra
 2. Set up a Python virtual environment using `python -m venv .venv`.
 3. Install the project dependencies using `python -m pip install -r requirements.txt`.
 
-You should now be all set to calculate optimal routes and help truckers minimize deadhead! The API can be run locally using `python manage.py runserver`.
+You should now be all set to calculate optimal routes and help truckers minimize deadhead! The API can be run locally using `python manage.py runserver`. By default, the API will be available at `localhost:8000`.
 
 ## The API
 One endpoint is provided: `/findpath`.
