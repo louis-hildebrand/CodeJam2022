@@ -10,7 +10,7 @@ Simple API that determines the optimal route for a trucker given certain constra
 You should now be all set to calculate optimal routes and help truckers minimize deadhead! The API can be run locally using `python manage.py runserver`. By default, the API will be available at `localhost:8000`.
 
 ## The API
-One endpoint is provided: `/findpath`.
+One endpoint is provided: `POST /findpath`.
 
 Requests should be made in the following format:
 ```
