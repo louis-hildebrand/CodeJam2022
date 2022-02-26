@@ -5,6 +5,8 @@ def sort_csv(file_in: str, file_out: str, categories: list = ["pickup_date_time"
     csvData = pandas.read_csv(file_in)
     csvData.sort_values(categories, axis=0, ascending=[ascending], inplace=True)
     csvData.to_csv(sorted, index=False, line_terminator='\n')
+    sorted.close()
+    return
 
 if __name__ == "__main__":
     sort_csv("123Loadboard_CodeJam_2022_dataset.csv", "Sorted.csv")
