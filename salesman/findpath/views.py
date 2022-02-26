@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.http import HttpResponse
 import json
 from rest_framework.decorators import api_view
@@ -31,8 +32,8 @@ def find_path(request):
         id = trip_request['input_trip_id']
         start_lat = trip_request['start_latitude']
         start_long = trip_request['start_longitude']
-        start_time = trip_request['start_time']
-        max_dest_time = trip_request['max_destination_time']
+        start_time = datetime.fromisoformat(trip_request['start_time'])
+        max_dest_time = datetime.fromisoformat(trip_request['max_destination_time'])
         path = calculate_route(start_lat, start_long, start_time, max_dest_time)
         result = {
             'input_trip_id': id,
