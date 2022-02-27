@@ -13,16 +13,16 @@ def find_path(request):
             "input_trip_id": 101,
             "start_latitude": 27.961307,
             "start_longitude": -82.4493,
-            "start_time": "2022-02-04 08:00:00",
-            "max_destination_time": "2022-02-06 15:00:00"
+            "start_time": "2022-03-04 08:00:00",
+            "max_destination_time": "2022-03-06 15:00:00"
         },
         {
             "input_trip_id": 102,
             "start_latitude": 27.961307,
             "start_longitude": -82.4493,
-            "start_time": "2022-03-04 08:00:00",
-            "max_destination_time": "2022-02-04 15:00:00"
-        },
+            "start_time": "2022-03-01 08:00:00",
+            "max_destination_time": "2022-03-02 23:00:00"
+        }
         ...
     ]
     """

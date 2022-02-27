@@ -40,8 +40,9 @@ def sort_loads_by_dist(loads: pd.DataFrame, start_long: float, start_lat: float)
     distances = []
     for row in loads.itertuples():
         lat = getattr(row, 'origin_latitude')
-        long = getattr(row, 'origin_latitude')
-        d = find_dist(start_long, start_lat, lat, long)
+        long = getattr(row, 'origin_longitude')
+        # d = find_dist(start_long, start_lat, lat, long) - This function does not seem to be working properly
+        d = (lat-start_lat)*(lat-start_lat) + (long-start_long)*(long-start_long)
         distances.append(d)
     loads.insert(0, 'd', distances)
     loads_with_dist = loads.sort_values('d', axis=0, ascending=True, inplace=False)
