@@ -28,3 +28,15 @@ def find_dist(long1, lat1, long2, lat2):
 
 def to_t_delt(number):
     return pd.to_timedelta(f'{math.floor(number)}hours {(number - math.floor(number)) * 100}min')
+
+def cost(start_lon, start_lat, end_lon, end_lat):
+    """
+    Cost of driving somewhere.
+    """
+    distance = find_dist(start_lon, start_lat, end_lon, end_lat)
+    return distance * 0.4
+
+def sort_loads_by_dist(loads: pd.DataFrame, start_long: float, start_lat: float) -> pd.DataFrame:
+    loads_with_dist = loads.assign(d = find_dist(start_long, start_lat, loads['origin_longitude'], loads['origin_latitude']))
+    loads_with_dist.sort_values('d', axis=0, ascending=True)
+    return loads_with_dist.drop('d', axis=1)

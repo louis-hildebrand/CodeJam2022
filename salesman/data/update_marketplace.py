@@ -1,11 +1,11 @@
 import os
 import pandas as pd
 
-from utils import find_dist, to_t_delt
+from data.utils import find_dist, to_t_delt
 
-ORIGINAL_MARKETPLACE = r'123Loadboard_CodeJam_2022_dataset.csv'
-TMP_MARKETPLACE = r'marketplace.tmp'
-FILLED_MARKETPLACE = r'marketplace.csv'
+ORIGINAL_MARKETPLACE = r'data\123Loadboard_CodeJam_2022_dataset.csv'
+TMP_MARKETPLACE = r'data\marketplace.tmp'
+FILLED_MARKETPLACE = r'data\marketplace.csv'
 
 def fill_data(file_in: str, file_out: str):
     csvfile = pd.read_csv(file_in)
@@ -33,7 +33,10 @@ def sort_csv(file_in: str, file_out: str, categories: list = ["pickup_date_time"
     sorted.close()
     return
 
-if __name__ == "__main__":
+def main():
     fill_data(ORIGINAL_MARKETPLACE, TMP_MARKETPLACE)
     sort_csv(TMP_MARKETPLACE, FILLED_MARKETPLACE)
     os.remove(TMP_MARKETPLACE)
+
+if __name__ == "__main__":
+    main()
