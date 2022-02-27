@@ -8,7 +8,8 @@ MAX_INDEX = 3
 
 def calculate_route(start_lat: float, start_long: float, start_time: datetime, max_dest_time: datetime) -> list[int]:
     _, route = calculate_route_and_profit(start_lat, start_long, start_time, max_dest_time)
-    return reversed(route)
+    route.reverse()
+    return route
 
 def calculate_route_and_profit(start_lat: float, start_long: float, start_time: datetime, max_dest_time: datetime) -> tuple[float, list[int]]:
     loads = filter(start_time, max_dest_time)
