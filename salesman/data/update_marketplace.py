@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import pandas as pd
 
@@ -15,7 +16,8 @@ def fill_data(file_in: str, file_out: str):
     pay = []
     for _, entry in csvfile.iterrows(): 
         distance = find_dist(entry.origin_longitude, entry.origin_latitude, entry.destination_longitude, entry.destination_latitude)
-        arrival_time.append(str(pd.to_datetime(entry.pickup_date_time) + to_t_delt(distance / 55)))
+        a_time = pd.to_datetime(entry.pickup_date_time) + to_t_delt(distance / 55)
+        arrival_time.append(a_time.isoformat(' ', 'seconds'))
         distance_value.append(distance)
         pay.append(entry.amount - (distance *  0.4))
     csvfile.insert(10, "geo_dist", distance_value)

@@ -37,6 +37,12 @@ def cost(start_lon, start_lat, end_lon, end_lat):
     return distance * 0.4
 
 def sort_loads_by_dist(loads: pd.DataFrame, start_long: float, start_lat: float) -> pd.DataFrame:
-    loads_with_dist = loads.assign(d = find_dist(start_long, start_lat, loads['origin_longitude'], loads['origin_latitude']))
-    loads_with_dist.sort_values('d', axis=0, ascending=True)
-    return loads_with_dist.drop('d', axis=1)
+    distances = []
+    for row in loads.itertuples():
+        lat = getattr(row, 'origin_latitude')
+        long = getattr(row, 'origin_latitude')
+        d = find_dist(start_long, start_lat, lat, long)
+        distances.append(d)
+    loads.insert(0, 'd', distances)
+    loads_with_dist = loads.sort_values('d', axis=0, ascending=True, inplace=False)
+    return loads_with_dist
