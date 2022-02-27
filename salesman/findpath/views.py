@@ -27,8 +27,7 @@ def find_path(request):
     ]
     """
     paths = []
-    sorted_trip_requests = sorted(request.data, key=lambda r: r['start_time'])
-    for trip_request in sorted_trip_requests:
+    for trip_request in request.data:
         id = trip_request['input_trip_id']
         start_lat = trip_request['start_latitude']
         start_long = trip_request['start_longitude']
